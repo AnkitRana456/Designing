@@ -219,20 +219,23 @@ body {
 }
 
 .dropdown-item::after {
-  content: 'â€º';
-  font-size: 1.15rem;
-  color: #666;
-  line-height: 1;
-  transition: color 0.15s;
+  content: '';
+  width: 24px;
+  height: 24px;
+  background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9 18L15 12L9 6' stroke='%23666666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: background-image 0.15s;
 }
 
 .dropdown-item:hover {
-  background: #e2e2e2;
+  background: #f8f8f8;
   color: var(--verde-green);
 }
 
 .dropdown-item:hover::after {
-  color: var(--verde-green);
+  background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9 18L15 12L9 6' stroke='%232d5a27' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
 }
 
 .hero-bg-img {
