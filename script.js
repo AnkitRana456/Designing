@@ -2,9 +2,13 @@
   'use strict';
 
   /* ── Mobile hamburger nav ── */
-  const hamburgerBtn     = document.getElementById('hamburger-btn');
-  const mobileNavOverlay = document.getElementById('mobile-nav-overlay');
-  const mobileNavClose   = document.getElementById('mobile-nav-close');
+  const hamburgerBtn          = document.getElementById('hamburger-btn');
+  const mobileNavOverlay      = document.getElementById('mobile-nav-overlay');
+  const mobileNavClose        = document.getElementById('mobile-nav-close');
+  const mobileProjectsTrigger = document.getElementById('mobile-projects-trigger');
+  const mobileProjectsBack    = document.getElementById('mobile-projects-back');
+  const mobileMainPanel       = document.getElementById('mobile-main-panel');
+  const mobileProjectsPanel   = document.getElementById('mobile-projects-panel');
 
   function openMobileNav() {
     mobileNavOverlay.classList.add('open');
@@ -12,6 +16,10 @@
     hamburgerBtn.setAttribute('aria-expanded', 'true');
     mobileNavOverlay.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
+    
+    // Reset panels state
+    mobileMainPanel.classList.remove('slide-out');
+    mobileProjectsPanel.classList.remove('slide-in');
   }
 
   function closeMobileNav() {
@@ -26,8 +34,23 @@
     hamburgerBtn.addEventListener('click', openMobileNav);
     mobileNavClose.addEventListener('click', closeMobileNav);
 
-    document.querySelectorAll('.mobile-nav-item').forEach(item => {
-      item.addEventListener('click', closeMobileNav);
+    // Drilldown Logic
+    mobileProjectsTrigger?.addEventListener('click', () => {
+      mobileMainPanel.classList.add('slide-out');
+      mobileProjectsPanel.classList.add('slide-in');
+    });
+
+    mobileProjectsBack?.addEventListener('click', () => {
+      mobileMainPanel.classList.remove('slide-out');
+      mobileProjectsPanel.classList.remove('slide-in');
+    });
+
+    // Close on link click
+    const mobileLinks = document.querySelectorAll('.mobile-nav-item, .mobile-project-item, .mobile-contact-btn');
+    mobileLinks.forEach(link => {
+      if (link.id !== 'mobile-projects-trigger') {
+        link.addEventListener('click', closeMobileNav);
+      }
     });
 
     mobileNavOverlay.addEventListener('click', (e) => {

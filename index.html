@@ -45,14 +45,39 @@
 
   <!-- Mobile Nav Overlay -->
   <div class="mobile-nav-overlay" id="mobile-nav-overlay" aria-hidden="true">
-    <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Close menu">&#x2715;</button>
-    <nav class="mobile-nav-links" aria-label="Mobile navigation">
-      <a href="#verde" class="mobile-nav-item" id="m-nav-home">Home</a>
-      <a href="#verde" class="mobile-nav-item" id="m-nav-verde">Embassy VERDE</a>
-      <a href="#greenshore" class="mobile-nav-item" id="m-nav-greenshore">Embassy GREENSHORE</a>
-      <a href="#springs" class="mobile-nav-item" id="m-nav-springs">Embassy Springs</a>
-      <a href="#contact" class="mobile-nav-item" id="m-nav-contact">Contact</a>
-    </nav>
+    <!-- Main Panel -->
+    <div class="mobile-nav-panel active" id="mobile-main-panel">
+      <div class="mobile-nav-header">
+        <a href="#" class="mobile-logo">
+          <img src="images/MAIN LOGO BLACK.svg" alt="Embassy Logo" />
+        </a>
+        <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Close menu">&#x2715;</button>
+      </div>
+      <nav class="mobile-nav-links">
+        <a href="#verde" class="mobile-nav-item">Home</a>
+        <div class="mobile-nav-item mobile-nav-trigger" id="mobile-projects-trigger">
+          Projects <span class="chevron-right"></span>
+        </div>
+        <a href="#location" class="mobile-nav-item">Location</a>
+      </nav>
+      <div class="mobile-nav-actions">
+        <a href="#contact" class="mobile-contact-btn" id="m-nav-contact">Contact</a>
+      </div>
+    </div>
+
+    <!-- Projects Sub-Panel -->
+    <div class="mobile-nav-panel" id="mobile-projects-panel">
+      <div class="mobile-nav-header">
+        <button class="mobile-nav-back" id="mobile-projects-back">
+          <span class="chevron-left"></span> back
+        </button>
+      </div>
+      <nav class="mobile-projects-list">
+        <a href="#verde" class="mobile-project-item">Embassy Verde</a>
+        <a href="#greenshore" class="mobile-project-item">Embassy Greenshore</a>
+        <a href="#springs" class="mobile-project-item">Embassy Springs</a>
+      </nav>
+    </div>
   </div>
 
 <section class="verde-hero" id="verde">
@@ -80,7 +105,7 @@
     </div>
     <div class="about-content-col verde-content">
       <p class="eyebrow green-eyebrow">ECO-FRIENDLY LIVING</p>
-      <h2 class="about-title">Embassy<br>VERDE</h2>
+      <h2 class="about-title">Embassy VERDE</h2>
       <p class="about-desc">Embassy Verde offers modern living amidst lush greenery in Embassy Springs, North Bengaluru. With wellness amenities, landscaped open spaces, and easy access to the international airport, it brings together nature, comfort, and seamless connectivity.</p>
       <div class="about-specs">
         <div class="spec-item">
@@ -97,7 +122,6 @@
           <div class="spec-text">AT NORTH BANGALORE</div>
         </div>
       </div>
-      <button class="btn-green-solid" id="verde-sitemap-btn">EXPLORE THE SITE MAP</button>
     </div>
   </section>
 
@@ -106,11 +130,6 @@
       <div>
         <h2 class="section-title-dark">Amenities</h2>
         <p class="section-sub-caps">DISCOVER THE IDEAL FUSION OF ELEGANCE AND PRACTICALITY.</p>
-      </div>
-      <div class="carousel-controls">
-        <button class="carousel-btn" id="verde-prev" aria-label="Previous amenity">
-         <img src="images/arrow_forward_ios1.svg" alt="" /></button>
-        <button class="carousel-btn carousel-btn-active" id="verde-next" aria-label="Next amenity"><img src="images/arrow_forward_ios.svg" alt="" /></button>
       </div>
     </div>
     <div class="amenities-carousel-wrap">
@@ -152,8 +171,13 @@
         </div>
       </div>
     </div>
-    <div class="amenities-footer">
-      <button class="btn-green-outline" id="verde-explore-sitemap">EXPLORE THE SITE MAP</button>
+    <div class="carousel-controls">
+      <button class="carousel-btn" id="verde-prev" aria-label="Previous amenity">
+        <img src="images/arrow_forward_ios1.svg" alt="" />
+      </button>
+      <button class="carousel-btn carousel-btn-active" id="verde-next" aria-label="Next amenity">
+        <img src="images/arrow_forward_ios.svg" alt="" />
+      </button>
     </div>
   </section>
 
@@ -177,7 +201,6 @@
         <div class="legend-item"><span class="legend-num verde-num">10</span><span class="legend-text">Site Exit</span></div>
         <div class="legend-item"><span class="legend-num verde-num">11</span><span class="legend-text">Pet Park</span></div>
       </div>
-      <button class="btn-green-solid btn-center" id="verde-masterplan-btn">EXPLORE THE SITE MAP</button>
     </div>
   </section>
 
@@ -205,7 +228,7 @@
 <section class="gs-about" id="gs-about">
     <div class="gs-about-content">
       <p class="eyebrow blue-eyebrow">ECO-FRIENDLY LIVING</p>
-      <h2 class="gs-about-title">Embassy<br>GREENSHORE</h2>
+      <h2 class="gs-about-title">Embassy GREENSHORE</h2>
       <p class="about-desc white-desc">Thoughtfully designed spacious homes with large windows and open layouts bring nature closer to everyday living. Located within the sustainable township of Embassy Springs, Embassy Greenshore offers access to top social infrastructure, green landscapes, and a vibrant communityâ€”creating a peaceful and elevated lifestyle.</p>
       <div class="about-specs">
         <div class="spec-item">
@@ -254,9 +277,6 @@
         <div class="legend-item"><span class="legend-num gs-num">14</span><span class="legend-text">Clubhouse</span></div>
         <div class="legend-item"><span class="legend-num gs-num">15</span><span class="legend-text">Swimming Pool</span></div>
       </div>
-      <div class="gs-masterplan-btn-container">
-        <button class="btn-gs-learn" id="gs-masterplan-btn">LEARN MORE</button>
-      </div>
     </div>
   </section>
 
@@ -294,7 +314,7 @@
     <div class="springs-hero-content">
       <p class="hero-tagline">PLOTS Â· DEVANAHALLI Â· BANGALORE</p>
       <h2 class="springs-hero-title">Embassy Springs</h2>
-      <p class="hero-description">Embassy Springs is a 288-acre township in Devanahalli with premium homes and plots (2400â€“5400 sq.ft) starting at â‚¹2.1 Cr.</p>
+      <p class="hero-description">Embassy Springs is a 288-acre township in Devanahalli with premium homes and plots (2400-5400 sq.ft) starting at Rs. 2.1 Cr.</p>
 
 <div class="hero-btns">
         <button class="btn-hero-primary" id="springs-know-more">KNOW MORE</button>
@@ -306,7 +326,7 @@
 <div class="connect">
   <div class="connect2">
   <span class="connectHeader">Connect With Us </span>
- <p class="connectSub">Connect with us to learn more â€” our team will help you find your perfect home.</p>
+ <p class="connectSub">Connect with us to learn more -our team will help you find your perfect home.</p>
  </div>
 </div>
 
@@ -317,7 +337,7 @@
         <img class="office-logo" src="images/MAIN LOGO WHITE.svg" alt="Contact office" />
 
         <h3 class="office-visit-title">Visit Our Office</h3>
-        <div class="office-detail">
+        <div class="office-detail" id="address-box">
           <div class="abc">
           <img src="images/SVG1.svg" alt="" class="office-detail-icon email-icon">
           </div>
@@ -326,14 +346,14 @@
             <div class="office-detail-value">Embassy Verde, Devanahalli,<br>Bangalore North, Karnataka “ 562110</div>
           </div>
         </div>
-        <div class="office-detail">
+        <div class="office-detail" id="phone-box">
          <img src="images/SVG2.svg" alt="" class="office-detail-icon email-icon">
           <div>
             <div class="office-detail-label">Phone</div>
             <div class="office-detail-value">88800 50000</div>
           </div>
         </div>
-        <div class="office-detail">
+        <div class="office-detail" id="email-box">
         <img src="images/Vector.svg" alt="" class="office-detail-icon email-icon">
           <div>
             <div class="office-detail-label">Email</div>
