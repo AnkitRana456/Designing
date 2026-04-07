@@ -37,8 +37,23 @@
         <a href="#location" class="nav-item" id="nav-location">Location</a>
         <a href="#contact" class="nav-item" id="nav-contact">Contact</a>
       </nav>
+      <button class="hamburger" id="hamburger-btn" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
+
+  <!-- Mobile Nav Overlay -->
+  <div class="mobile-nav-overlay" id="mobile-nav-overlay" aria-hidden="true">
+    <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Close menu">&#x2715;</button>
+    <nav class="mobile-nav-links" aria-label="Mobile navigation">
+      <a href="#verde" class="mobile-nav-item" id="m-nav-home">Home</a>
+      <a href="#verde" class="mobile-nav-item" id="m-nav-verde">Embassy VERDE</a>
+      <a href="#greenshore" class="mobile-nav-item" id="m-nav-greenshore">Embassy GREENSHORE</a>
+      <a href="#springs" class="mobile-nav-item" id="m-nav-springs">Embassy Springs</a>
+      <a href="#contact" class="mobile-nav-item" id="m-nav-contact">Contact</a>
+    </nav>
+  </div>
 
 <section class="verde-hero" id="verde">
     <div class="verde-hero-bg">
@@ -302,21 +317,23 @@
 
         <h3 class="office-visit-title">Visit Our Office</h3>
         <div class="office-detail">
-          <span class="office-detail-icon address-icon">ðŸ“</span>
+          <div class="abc">
+          <img src="images/SVG1.svg" alt="" class="office-detail-icon email-icon">
+          </div>
           <div>
             <div class="office-detail-label">Address</div>
-            <div class="office-detail-value">Embassy Verde, Devanahalli,<br>Bangalore North, Karnataka â€“ 562110</div>
+            <div class="office-detail-value">Embassy Verde, Devanahalli,<br>Bangalore North, Karnataka “ 562110</div>
           </div>
         </div>
         <div class="office-detail">
-          <span class="office-detail-icon phone-icon">ðŸ“ž</span>
+         <img src="images/SVG2.svg" alt="" class="office-detail-icon email-icon">
           <div>
             <div class="office-detail-label">Phone</div>
             <div class="office-detail-value">88800 50000</div>
           </div>
         </div>
         <div class="office-detail">
-          <span class="office-detail-icon email-icon">âœ‰ï¸</span>
+        <img src="images/Vector.svg" alt="" class="office-detail-icon email-icon">
           <div>
             <div class="office-detail-label">Email</div>
             <div class="office-detail-value">sales@embassyverde.com</div>

@@ -1,6 +1,40 @@
 (function () {
   'use strict';
 
+  /* ── Mobile hamburger nav ── */
+  const hamburgerBtn     = document.getElementById('hamburger-btn');
+  const mobileNavOverlay = document.getElementById('mobile-nav-overlay');
+  const mobileNavClose   = document.getElementById('mobile-nav-close');
+
+  function openMobileNav() {
+    mobileNavOverlay.classList.add('open');
+    hamburgerBtn.classList.add('active');
+    hamburgerBtn.setAttribute('aria-expanded', 'true');
+    mobileNavOverlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMobileNav() {
+    mobileNavOverlay.classList.remove('open');
+    hamburgerBtn.classList.remove('active');
+    hamburgerBtn.setAttribute('aria-expanded', 'false');
+    mobileNavOverlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  if (hamburgerBtn && mobileNavOverlay) {
+    hamburgerBtn.addEventListener('click', openMobileNav);
+    mobileNavClose.addEventListener('click', closeMobileNav);
+
+    document.querySelectorAll('.mobile-nav-item').forEach(item => {
+      item.addEventListener('click', closeMobileNav);
+    });
+
+    mobileNavOverlay.addEventListener('click', (e) => {
+      if (e.target === mobileNavOverlay) closeMobileNav();
+    });
+  }
+
 const dropdownBtn = document.getElementById('nav-projects-btn');
   const dropdownMenu = document.getElementById('projects-dropdown');
   const navDropdown = dropdownBtn ? dropdownBtn.closest('.nav-dropdown') : null;
