@@ -601,6 +601,8 @@ body {
 .carousel-controls {
   display: flex;
   gap: 8px;
+  margin-top: 24px;
+  /* Added gap between arrows and image */
 }
 
 .carousel-btn {
@@ -1414,7 +1416,123 @@ body {
   border-color: var(--verde-green);
 }
 
-.btn-submit-dark {
+/* ── Phone Input Robust Layout ── */
+.phone-input-group {
+  display: flex !important;
+  align-items: center !important;
+  width: 100% !important;
+  background: var(--white) !important;
+  border: 1.5px solid #edf2f7 !important;
+  border-radius: 4px !important;
+  position: relative !important;
+  overflow: visible !important;
+  height: 52px !important; /* Modal Default */
+}
+
+.contact-form .phone-input-group {
+  height: 68px !important; /* Footer Default */
+  border-color: #d8d8d8 !important;
+  border-radius: 2px !important;
+}
+
+.phone-prefix {
+  display: flex !important;
+  align-items: center !important;
+  padding: 0 15px !important;
+  gap: 8px !important;
+  border-right: 1px solid #edf2f7 !important;
+  height: 100% !important;
+  background: #fdfdfd !important;
+  min-width: 80px !important;
+}
+
+.contact-form .phone-prefix {
+  border-right-color: #eee !important;
+}
+
+.iti-loaded .manual-fallback {
+  display: none !important;
+}
+
+.iti-loaded .phone-input-group {
+  border: none !important; /* ITI handles borders */
+  background: transparent !important;
+}
+
+.flag-icon {
+  width: 20px !important;
+  height: auto !important;
+}
+
+.prefix-chevron {
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4.5px solid #666;
+}
+
+/* ── intlTelInput Global Styling ── */
+.iti {
+  width: 100% !important;
+  display: block !important;
+}
+
+.iti input {
+  padding-left: 95px !important;
+  width: 100% !important;
+}
+
+/* Fix for footer form height */
+.contact-form .iti input {
+  height: 68px !important;
+  border: 1px solid #d8d8d8 !important;
+  border-radius: 2px !important;
+  background: #fff !important;
+}
+
+/* Fix for modal form height */
+.redesigned-modal-form .iti input {
+  height: 52px !important;
+  border: 1.5px solid #edf2f7 !important;
+  border-radius: 4px !important;
+  background: #fff !important;
+}
+
+.redesigned-modal-form .iti input:focus {
+  border-color: #111 !important;
+}
+
+.iti__selected-flag {
+  padding: 0 12px 0 16px !important;
+  background: #fdfdfd !important;
+  border-right: 1px solid #edf2f7 !important;
+  height: 100% !important;
+}
+
+.contact-form .iti__selected-flag {
+  border-right: 1px solid #eee !important;
+}
+
+.iti__country-list {
+  z-index: 3000 !important;
+}
+
+.iti__flag-container {
+  height: 100% !important;
+}
+
+/* ── Phone Input Support ── */
+.phone-open-div {
+  width: 100%;
+}
+
+.enq_form {
+  display: block;
+}
+
+.btn-submit-dark,
+.submit_button {
   display: block;
   width: 261px;
   height: 49px;
@@ -1429,6 +1547,8 @@ body {
   cursor: pointer;
   transition: background 0.2s;
   margin-top: 8px;
+  text-align: center;
+  text-decoration: none;
 }
 
 .btn-submit-dark:hover {
@@ -2440,5 +2560,148 @@ body {
 
   .connectHeader {
     font-size: 22px;
+  }
+}
+
+/* ================================================
+   INQUIRY MODAL STYLES (Single Column with Logo)
+   ================================================ */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.modal-overlay[aria-hidden="false"] {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-content.redesigned.simplified {
+  background: #fff;
+  width: 100%;
+  max-width: 520px;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.3);
+  transform: scale(0.96) translateY(30px);
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), opacity 0.4s ease;
+  padding: 48px 40px;
+  color: #111;
+}
+
+.modal-overlay[aria-hidden="false"] .modal-content.redesigned.simplified {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: #f1f5f9;
+  border: none;
+  color: #64748b;
+  font-size: 20px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.2s;
+}
+
+.modal-close:hover {
+  background: #000;
+  color: #fff;
+}
+
+.modal-logo-wrap {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.modal-top-logo {
+  height: 48px;
+  width: auto;
+  display: inline-block;
+}
+
+.redesigned-modal-title {
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  color: #111;
+  margin-bottom: 32px;
+  font-weight: 400;
+  line-height: 1;
+  text-align: center;
+}
+
+.redesigned-modal-form .form-group {
+  margin-bottom: 20px;
+}
+
+.redesigned-modal-form .form-label {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #4b5563;
+  margin-bottom: 8px;
+}
+
+.redesigned-modal-form .form-input {
+  width: 100%;
+  height: 52px;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  padding: 0 16px;
+  font-size: 1rem;
+  background: #fff;
+  transition: border-color 0.2s;
+}
+
+.redesigned-modal-form .form-input:focus {
+  border-color: #111;
+  outline: none;
+}
+
+.redesigned-modal-form .btn-submit-dark {
+  width: 100%;
+  height: 56px;
+  margin-top: 12px;
+  font-size: 0.9rem;
+  letter-spacing: 0.15em;
+  background: #000;
+  color: #fff;
+  border: none;
+  font-family: var(--font-caps);
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  border-radius: 4px;
+}
+
+.redesigned-modal-form .btn-submit-dark:hover {
+  opacity: 0.9;
+}
+
+@media (max-width: 480px) {
+  .modal-content.redesigned.simplified {
+    padding: 36px 24px;
   }
 }
