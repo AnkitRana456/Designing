@@ -31,7 +31,7 @@
   --font-body: 'Inter';
   --font-caps: 'Montserrat', system-ui, sans-serif;
 
-  --nav-height: 72px;
+  --nav-height: 120px;
   --max-w: 1160px;
 }
 
@@ -43,7 +43,19 @@ body {
 
   color: var(--text-dark);
   background: var(--white);
-  overflow-x: hidden;
+  overflow-x: clip; /* Fix for sticky positioning */
+}
+
+/* Ensure all sections behave as layers over the sticky masterplans */
+section,
+.verde-hero,
+.verde-about,
+.amenities-section,
+.gs-about,
+.gs-gallery,
+.contact-section {
+  position: relative;
+  z-index: 2;
 }
 
 .navbar {
@@ -59,7 +71,8 @@ body {
 
 .nav-container {
   width: 100%;
-  padding: 0 64px;
+  padding: 0 88px 0 64px;
+  /* 88px right padding, 64px left padding */
   height: 100%;
   display: flex;
   align-items: center;
@@ -67,8 +80,8 @@ body {
 }
 
 .logo-img {
-  height: 40px;
-  width: auto;
+  width: 194px;
+  height: 60px;
   display: block;
 }
 
@@ -112,12 +125,12 @@ body {
 .nav-menu {
   display: flex;
   align-items: center;
-  gap: 36px;
+  gap: 56px;
 }
 
 .nav-item {
   font-family: var(--font-body);
-  font-size: 0.9rem;
+  font-size: 20px;
   font-weight: 400;
   color: var(--text-dark);
   text-decoration: none;
@@ -252,16 +265,17 @@ body {
   font-size: 0.7rem;
   font-weight: 500;
   letter-spacing: 0.22em;
-  color: rgba(255, 255, 255, 0.7);
-  margin-bottom: 14px;
+  color: #9CA3AF;
+  margin-bottom: 40px;
 }
 
 .hero-description {
-  font-size: 1.25rem;
+  font-size: 20px;
+  font-weight: 300;
   line-height: 1.7;
   color: rgba(255, 255, 255, 0.8);
   max-width: 100%;
-  margin-bottom: 36px;
+  margin-bottom: 64px;
   padding: 0 110px;
 }
 
@@ -320,12 +334,12 @@ body {
   justify-content: center;
   gap: 10px;
 
-  margin-bottom: 28px;
+  margin-bottom: 80px;
 }
 
 .project-brand img {
-  width: 286px;
-  height: 74px;
+  width: 260px;
+  height: 120px;
 }
 
 .project-brand .brand-icon {
@@ -353,11 +367,11 @@ body {
 
 .verde-hero {
   position: relative;
-  height: 100vh;
-  min-height: 680px;
+  height: 800px;
+  min-height: 800px;
   display: flex;
   align-items: center;
-  padding-top: var(--nav-height);
+  margin-top: var(--nav-height);
   overflow: hidden;
 }
 
@@ -369,10 +383,7 @@ body {
 .verde-hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to right,
-      rgba(25, 55, 20, 0.88) 0%,
-      rgba(30, 65, 25, 0.72) 45%,
-      rgba(20, 50, 18, 0.4) 100%);
+  background: rgba(63, 98, 18, 0.8);
 }
 
 .verde-hero-content {
@@ -387,11 +398,11 @@ body {
 
 .verde-hero-title {
   font-family: var(--font-serif);
-  font-size: clamp(3rem, 7vw, 5.2rem);
+  font-size: 96px;
   font-weight: 400;
   color: var(--white);
   line-height: 1.05;
-  margin-bottom: 20px;
+  margin-bottom: 32px;
   letter-spacing: -0.01em;
 }
 
@@ -449,7 +460,7 @@ body {
 }
 
 .green-eyebrow {
-  color: var(--verde-green);
+  color: #3F6212;
 }
 
 .blue-eyebrow {
@@ -458,10 +469,11 @@ body {
 
 .about-title {
   font-family: var(--font-serif);
-  font-size: clamp(2.4rem, 4vw, 3.2rem);
+  font-size: 72px;
   color: #1A2E05;
   font-weight: 400;
-  line-height: 1.1;
+  line-height: 72px;
+  letter-spacing: 0px;
   margin-bottom: 20px;
 }
 
@@ -516,8 +528,11 @@ body {
 }
 
 .btn-green-solid {
-  display: inline-block;
-  padding: 13px 26px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 273px;
+  height: 52px;
   background: #3F6212;
   color: var(--white);
   border: none;
@@ -601,7 +616,7 @@ body {
 .carousel-controls {
   display: flex;
   gap: 8px;
-  margin-top: 24px;
+  /* margin-top: 24px; */
   /* Added gap between arrows and image */
 }
 
@@ -626,6 +641,16 @@ body {
   background: var(--verde-btn);
   border-color: var(--verde-btn);
   color: var(--white);
+}
+
+.carousel-btn img {
+  filter: brightness(0) opacity(0.5);
+  transition: filter 0.2s;
+}
+
+.carousel-btn-active img,
+.carousel-btn:hover img {
+  filter: brightness(0) invert(1);
 }
 
 .amenities-carousel-wrap {
@@ -675,7 +700,11 @@ body {
   flex-direction: column;
   justify-content: flex-end;
   gap: 10px;
-  background: linear-gradient(to right, #000000, rgba(0, 0, 0, 0.2));
+  background: linear-gradient(to top,
+      rgba(0, 0, 0, 0.9) 0%,
+      rgba(0, 0, 0, 0.5) 40%,
+      rgba(0, 0, 0, 0.2) 75%,
+      rgba(0, 0, 0, 0.1) 100%);
   color: var(--white);
   font-size: 0.82rem;
   font-weight: 500;
@@ -710,10 +739,36 @@ body {
 
 .verde-masterplan {
   background: var(--verde-light-bg);
+  position: sticky;
+  top: var(--nav-height);
+  height: calc(100vh - var(--nav-height));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 1;
+  will-change: transform;
+  overflow: hidden;
+  padding: 20px 64px !important;
 }
 
 .gs-masterplan {
-  background: var(--gs-navy);
+  background: #0B202D;
+}
+
+#greenshore {
+  position: relative;
+  z-index: 5;
+  box-shadow: 0 -24px 60px rgba(0, 0, 0, 0.4);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+#springs {
+  position: sticky;
+  top: var(--nav-height);
+  min-height: calc(100vh - var(--nav-height));
+  z-index: 2;
+  will-change: transform;
+  box-shadow: 0 -24px 60px rgba(0, 0, 0, 0.4);
 }
 
 .masterplan-inner {
@@ -728,31 +783,31 @@ body {
 }
 
 .masterplan-img {
-  width: 100%;
-  height: auto;
+  width: auto;
+  max-width: 100%;
+  max-height: 32vh;
+  margin: 0 auto;
   object-fit: contain;
   display: block;
 }
 
 .masterplan-legend {
-  display: flex;
-  flex-wrap: wrap;
-  row-gap: 16px;
-  column-gap: 16px;
-  margin-bottom: 32px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 8px;
+  margin: 0 auto 16px;
+  width: 100%;
 }
 
 .legend-item {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: flex-start;
-  height: 46px;
+  height: 32px;
   border: 1px solid #3F6212;
   border-radius: 50px;
-
-  font-size: 0.8rem;
+  font-size: 0.68rem;
   color: var(--text-dark);
-
   background: transparent;
 }
 
@@ -769,8 +824,8 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 46px;
-  height: 46px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   font-family: var(--font-caps);
   font-size: 0.65rem;
@@ -791,8 +846,8 @@ body {
 
 .greenshore-hero {
   position: relative;
-  height: 100vh;
-  min-height: 680px;
+  min-height: calc(100vh - var(--nav-height));
+  height: auto;
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -810,10 +865,7 @@ body {
 .greenshore-hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg,
-      rgba(10, 20, 50, 0.9) 0%,
-      rgba(15, 35, 70, 0.75) 50%,
-      rgba(8, 18, 45, 0.5) 100%);
+  background: rgba(8, 45, 67, 0.8);
 }
 
 .gs-hex-shape {
@@ -854,32 +906,35 @@ body {
 .gs-about {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  background: #0d1f38;
+  background: #082D43;
   min-height: 600px;
-  padding: 0 64px;
+  padding: 40px 64px;
+  gap: 64px;
 }
 
 .gs-about-content {
-  padding: 80px 40px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  text-align: center;
-  background: #0d1f38;
+  align-items: flex-start;
+  text-align: left;
+  background: transparent;
 }
 
 .gs-about-title {
   font-family: var(--font-serif);
-  font-size: clamp(2.2rem, 3.5vw, 3rem);
+  font-size: 72px;
   font-weight: 400;
   color: var(--white);
-  line-height: 1.1;
+  line-height: 72px;
+  letter-spacing: 0px;
   margin-bottom: 20px;
 }
 
 .gs-about .about-specs {
   border-color: rgba(255, 255, 255, 0.1);
+  width: 100%;
+  justify-content: space-between;
 }
 
 .gs-about .spec-text {
@@ -889,7 +944,8 @@ body {
 .gs-about-btns {
   display: flex;
   gap: 12px;
-  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-between;
   margin-top: 4px;
 }
 
@@ -934,6 +990,18 @@ body {
 
 .gs-about-image {
   overflow: hidden;
+  position: relative;
+}
+
+.gs-about-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom,
+      rgba(0, 0, 0, 0.2),
+      rgba(0, 0, 0, 0.2));
+  pointer-events: none;
+  z-index: 1;
 }
 
 .gs-property-img {
@@ -944,8 +1012,13 @@ body {
 }
 
 .gs-gallery {
-  background: #0d1f38;
+  background: #082D43;
   padding: 72px 64px 80px;
+  position: sticky;
+  top: var(--nav-height);
+  min-height: calc(100vh - var(--nav-height));
+  z-index: 1;
+  will-change: transform;
 }
 
 .gs-gallery-inner {
@@ -975,21 +1048,33 @@ body {
   align-items: center;
   justify-content: center;
   margin-bottom: 52px;
-  perspective: 900px;
-  perspective-origin: 50% 40%;
+}
+
+/* Hidden on desktop */
+.gs-gallery-pagination {
+  display: none;
+}
+
+.gs-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.gs-dot.active {
+  width: 30px;
+  background: #ffffff;
 }
 
 .gs-gallery-card {
-  width: 280px;
-  height: 280px;
+  width: 270px;
+  height: 270px;
   overflow: visible;
   border-radius: 6px;
-  flex-shrink: 0;
   position: relative;
-  transform-style: preserve-3d;
-
-  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1),
-    box-shadow 0.5s cubic-bezier(0.23, 1, 0.32, 1);
   cursor: pointer;
 }
 
@@ -1022,42 +1107,38 @@ body {
 }
 
 .gs-gc-left {
-  transform: rotateY(18deg);
-  box-shadow: 18px 12px 48px rgba(0, 0, 0, 0.55);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
 }
 
 .gs-gc-center-left {
-  transform: rotateY(6deg);
-  box-shadow: 8px 10px 36px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
 }
 
 .gs-gc-center-right {
-  transform: rotateY(-6deg);
-  box-shadow: -8px 10px 36px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
 }
 
 .gs-gc-right {
-  transform: rotateY(-18deg);
-  box-shadow: -18px 12px 48px rgba(0, 0, 0, 0.55);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
 }
 
 .btn-gs-brochure {
   display: inline-block;
-  padding: 14px 40px;
-  background: transparent;
-  color: var(--white);
-  border: 1.5px solid rgba(255, 255, 255, 0.7);
+  padding: 16px 40px;
+  width: 261px;
+  background: #FFFFFF;
+  color: #0C4A6E;
+  border: none;
   font-family: var(--font-caps);
   font-size: 0.72rem;
   font-weight: 600;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.1em;
   cursor: pointer;
-  transition: background 0.2s, border-color 0.2s;
+  transition: background 0.2s;
 }
 
 .btn-gs-brochure:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: var(--white);
+  background: rgba(255, 255, 255, 0.8);
 }
 
 .gs-masterplan-btn-container {
@@ -1088,8 +1169,8 @@ body {
 
 .springs-hero {
   position: relative;
-  height: 100vh;
-  min-height: 680px;
+  min-height: calc(100vh - var(--nav-height));
+  height: auto;
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -1103,7 +1184,7 @@ body {
 .springs-hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 80%);
+  background: rgba(0, 0, 0, 0.81);
 }
 
 .springs-hero-content {
@@ -1258,7 +1339,7 @@ body {
   border-radius: 4px;
   padding: 64px 40px 40px 40px;
   color: var(--white);
-  background-image: url('images/embassy_verde_house.png');
+  background-image: url('images/footer-final.svg');
   background-size: cover;
   background-position: center;
   position: relative;
@@ -1426,11 +1507,13 @@ body {
   border-radius: 4px !important;
   position: relative !important;
   overflow: visible !important;
-  height: 52px !important; /* Modal Default */
+  height: 52px !important;
+  /* Modal Default */
 }
 
 .contact-form .phone-input-group {
-  height: 68px !important; /* Footer Default */
+  height: 68px !important;
+  /* Footer Default */
   border-color: #d8d8d8 !important;
   border-radius: 2px !important;
 }
@@ -1455,7 +1538,8 @@ body {
 }
 
 .iti-loaded .phone-input-group {
-  border: none !important; /* ITI handles borders */
+  border: none !important;
+  /* ITI handles borders */
   background: transparent !important;
 }
 
@@ -1604,8 +1688,18 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-top: 40px;
+  padding-top: 40px;
+  margin-top: 0;
+  background: var(--white);
+  position: relative;
+  z-index: 5;
+  box-shadow: 0 -24px 60px rgba(0, 0, 0, 0.15);
+}
 
+.contact-section {
+  background: var(--white);
+  position: relative;
+  z-index: 5;
 }
 
 .connect2 {
@@ -1992,9 +2086,6 @@ body {
 
   /* Gallery cards — remove perspective tilt on tablets */
   .gs-gallery-grid {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 16px;
     perspective: none;
   }
 
@@ -2003,8 +2094,6 @@ body {
   .gs-gc-center-left,
   .gs-gc-center-right {
     transform: none;
-    width: 160px;
-    height: 160px;
   }
 }
 
@@ -2018,26 +2107,16 @@ body {
   }
 
   /* Hero sections */
-  .verde-hero {
-    height: 620px;
-    min-height: 620px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    padding-top: calc(var(--nav-height) + 40px);
-    padding-bottom: 32px;
-  }
-
+  .verde-hero,
   .greenshore-hero,
   .springs-hero {
-    height: 600px;
-    min-height: 600px;
+    height: 609px;
+    min-height: 609px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    padding-top: calc(var(--nav-height) + 40px);
+    padding-top: calc(var(--nav-height) + 32px);
     padding-bottom: 32px;
   }
 
@@ -2056,20 +2135,19 @@ body {
     flex-direction: column;
     padding: 0 24px;
     text-align: center;
+    justify-content: center;
   }
 
   .hero-description {
-    padding: 0;
-    font-size: 0.98rem;
-    margin-bottom: 40px;
-    /* Increased to fill space better */
+    padding: 0 16px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 32px;
   }
 
   .hero-tagline {
-    margin-top: 59px;
-    /* Absolute fixed per 199px from top request */
-    margin-bottom: 24px;
-    /* Increased from 16px */
+    margin-top: 0;
+    margin-bottom: 16px;
   }
 
   .hero-btns {
@@ -2077,18 +2155,41 @@ body {
     align-items: center;
     justify-content: center;
     gap: 12px;
-    margin-top: auto;
-    margin-bottom: 180px;
+    margin-top: 0;
+    margin-bottom: 24px;
+  }
+
+  .greenshore-hero .hero-description {
+    padding: 0 32px;
   }
 
   .btn-hero-primary,
   .btn-hero-outline {
     flex: 1;
     max-width: 170px;
-    height: 56px;
-    font-size: 0.8rem;
-    letter-spacing: 0.1em;
+    height: 53px;
+    font-size: 0.65rem;
+    letter-spacing: 0.05em;
     padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Springs hero — wider buttons to match reference */
+  .springs-hero-content .btn-hero-primary,
+  .springs-hero-content .btn-hero-outline {
+    max-width: none;
+    height: 56px;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    flex: 1;
+  }
+
+  .springs-hero-content .hero-btns {
+    width: 100%;
+    justify-content: center;
+    gap: 8px;
   }
 
   .verde-hero-title,
@@ -2096,8 +2197,7 @@ body {
   .springs-hero-title {
     font-size: 2.2rem;
     line-height: 1.2;
-    margin-bottom: 40px;
-    /* Increased to fill space better */
+    margin-bottom: 24px;
   }
 
   /* Masterplan Legend */
@@ -2149,6 +2249,10 @@ body {
     color: #ffffff;
   }
 
+  .project-brand {
+    margin-bottom: 24px;
+  }
+
   .project-brand img {
     width: 200px;
     height: auto;
@@ -2157,7 +2261,17 @@ body {
   /* About sections */
   .about-image-col,
   .gs-about-image {
-    height: 260px;
+    height: 480px;
+    padding: 0;
+    width: 100%;
+    position: relative;
+  }
+
+  .gs-about-image img,
+  .about-image-col img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   .about-content-col,
@@ -2167,6 +2281,25 @@ body {
     flex-direction: column;
     align-items: center;
     text-align: center;
+  }
+
+  /* Greenshore about content — left aligned to match reference */
+  .gs-about-content {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .gs-about-title br {
+    display: none;
+  }
+
+  .gs-about-title {
+    font-size: clamp(1.8rem, 7.5vw, 2.8rem);
+    line-height: 1.15;
+  }
+
+  .gs-about .about-desc {
+    text-align: left;
   }
 
   .about-specs {
@@ -2187,11 +2320,16 @@ body {
     gap: 10px;
   }
 
+  .about-title br {
+    display: none;
+  }
+
   .spec-text {
-    font-size: 0.65rem;
+    font-size: 0.55rem;
     font-weight: 600;
     line-height: 1.3;
     color: #64748b;
+    white-space: nowrap;
   }
 
   .btn-green-solid {
@@ -2205,28 +2343,40 @@ body {
   .gs-about {
     display: flex;
     flex-direction: column-reverse;
+    padding: 0;
+    gap: 0;
+  }
+
+  .gs-about-content {
+    padding: 36px 24px;
+  }
+
+  .gs-about-image {
+    width: 100%;
+    margin: 0;
   }
 
   .gs-about-btns {
     width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 12px;
   }
 
   .btn-gs-outline,
   .btn-gs-dark-outline {
     flex: 1;
-    max-width: 170px;
+    max-width: 220px;
     height: 56px;
-    font-size: 0.8rem;
+    font-size: 0.72rem;
     letter-spacing: 0.1em;
-    padding: 0;
+    padding: 0 12px;
+    white-space: nowrap;
   }
 
   .btn-submit-dark {
-    width: 100%;
+    width: 261px;
     height: auto;
     padding: 16px;
   }
@@ -2234,22 +2384,32 @@ body {
   /* Amenities section */
   .amenities-section {
     padding: 28px 0 28px 0;
+    display: flex;
+    flex-direction: column;
   }
 
   .amenities-header {
+    display: contents;
+  }
+
+  .amenities-header>div:first-child {
+    order: 1;
     padding: 0 24px;
-    margin-bottom: 20px;
-    flex-wrap: wrap;
-    gap: 12px;
+    margin-bottom: 32px;
+  }
+
+  .amenities-carousel-wrap {
+    order: 2;
+    padding-left: 24px;
   }
 
   .carousel-controls {
+    order: 3;
     display: flex;
     justify-content: flex-start;
     padding: 0 24px;
-    gap: 12px;
-    margin-top: 32px;
-    /* Space from the image */
+    gap: 0;
+    margin-top: 24px;
     padding-bottom: 12px;
     width: 100%;
     box-sizing: border-box;
@@ -2257,13 +2417,8 @@ body {
 
   .carousel-btn {
     width: 48px;
-    /* Slightly larger for touch */
     height: 48px;
     border-radius: 4px;
-  }
-
-  .amenities-carousel-wrap {
-    padding-left: 24px;
   }
 
   .amenity-card {
@@ -2271,29 +2426,46 @@ body {
   }
 
   .amenity-img {
-    height: 220px;
+    height: 240px;
   }
 
+  .amenities-footer-action,
   .amenities-footer {
+    order: 4;
     padding: 0 24px;
+    margin-top: 16px;
   }
 
   /* Master plan */
   .masterplan-section {
-    padding: 28px 24px;
+    padding: 28px 24px 64px 24px;
+    height: 670px;
+    min-height: 670px;
   }
 
   .gs-masterplan {
     background: #0B202D !important;
   }
 
+  .gs-masterplan .masterplan-img-wrap {
+    background: transparent;
+  }
+
+  .gs-masterplan .masterplan-img {
+    height: 208px;
+  }
+
   .masterplan-img-wrap {
-    margin: 20px 0;
+    margin: 16px 0;
+    overflow: hidden;
   }
 
   .masterplan-img {
-    height: auto;
+    width: 100%;
+    height: 240px;
     object-fit: contain;
+    display: block;
+    margin: 0 auto;
   }
 
   .masterplan-legend {
@@ -2343,21 +2515,95 @@ body {
     color: #ffffff;
   }
 
+  /* Greenshore legend — match reference design */
+  .gs-masterplan .masterplan-legend {
+    grid-template-columns: 1fr 1fr;
+    gap: 22px 16px;
+    padding: 0;
+  }
+
+  .gs-legend .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    border: none;
+    background: transparent;
+    padding: 0;
+  }
+
+  .gs-legend .legend-num,
+  .gs-legend .gs-num {
+    font-size: 0.85rem !important;
+    font-weight: 500 !important;
+    min-width: 38px;
+    width: auto !important;
+    height: auto !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    color: #ffffff !important;
+    display: inline !important;
+    padding: 0 !important;
+  }
+
+  .gs-legend .legend-text {
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: #ffffff;
+    white-space: nowrap;
+  }
+
   /* GS Gallery */
   .gs-gallery {
     padding: 48px 24px 56px;
   }
 
   .gs-gallery-grid {
-    gap: 12px;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 16px;
+    padding-bottom: 24px;
+    margin-bottom: 4px;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+  
+  .gs-gallery-grid::-webkit-scrollbar {
+    display: none;
   }
 
   .gs-gc-left,
   .gs-gc-right,
   .gs-gc-center-left,
   .gs-gc-center-right {
-    width: 140px;
-    height: 140px;
+    flex: 0 0 85%;
+    width: auto !important;
+    height: 380px !important;
+    scroll-snap-align: center;
+  }
+
+  .gs-gallery-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+
+  .gs-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .gs-dot.active {
+    width: 24px;
+    background: #ffffff;
   }
 
   /* Contact */
@@ -2378,23 +2624,66 @@ body {
   }
 
   .contact-office-card {
-    width: 100%;
-    min-height: 280px;
+    width: calc(100% + 48px);
+    margin: 0 -24px -48px -24px;
+    height: 468px;
+    min-height: 468px;
+    border-radius: 0;
+    padding: 32px 24px;
+    gap: 16px;
+  }
+
+  .contact-office-card .office-logo {
+    margin-bottom: 24px;
+    align-self: flex-start;
+  }
+
+  .office-visit-title {
+    margin-top: 40px;
+    font-size: 1.6rem;
+    align-self: flex-start;
+  }
+
+  .office-detail {
+    gap: 16px;
+    align-self: flex-start;
+  }
+
+  .office-detail-icon {
+    width: 36px;
+    height: 36px;
+    padding: 6px;
+  }
+
+  .office-detail-label {
+    font-size: 0.95rem;
+    margin-bottom: 4px;
+  }
+
+  .office-detail-value {
+    font-size: 0.95rem;
   }
 
   /* Connect */
   .connect {
     margin-top: 24px;
     padding: 0 24px;
+    align-items: flex-start;
+  }
+
+  .connect2 {
+    align-items: flex-start;
+    padding: 0;
   }
 
   .connectHeader {
     font-size: 26px;
-    text-align: center;
+    text-align: left;
   }
 
   .connectSub {
     font-size: 0.9rem;
+    text-align: left;
   }
 }
 
@@ -2446,18 +2735,12 @@ body {
     font-size: 1.6rem;
   }
 
-  /* Gallery — 2x2 grid-like on very small screens */
+  /* Gallery — ensuring horizontal carousel on very small screens */
   .gs-gallery-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
     perspective: none;
   }
 
-  .gs-gallery-card {
-    width: 100%;
-    height: 140px;
-  }
+  /* Inherits flex layout from main/mobile definitions */
 
   /* Sections padding */
   .amenities-section {
@@ -2543,12 +2826,10 @@ body {
   }
 
   .gs-gallery-grid {
-    grid-template-columns: 1fr 1fr;
+    perspective: none;
   }
 
-  .gs-gallery-card {
-    height: 120px;
-  }
+  /* Inherits flex layout */
 
   .about-specs {
     gap: 0.6rem;
@@ -2700,8 +2981,50 @@ body {
   opacity: 0.9;
 }
 
+.amenities-footer-action {
+  margin-top: 32px;
+}
+
 @media (max-width: 480px) {
   .modal-content.redesigned.simplified {
     padding: 36px 24px;
   }
+}
+
+@media (max-width: 768px) {
+
+  #verde-explore-amenities,
+  #verde-masterplan-learn,
+  #gs-masterplan-learn {
+    display: none !important;
+  }
+
+  .mobile-nav-close {
+    transform: translateY(-8px);
+  }
+}
+
+/* Desktop Masterplan Button Styling */
+#gs-masterplan-learn {
+  display: inline-block;
+  padding: 16px 40px;
+  width: 261px;
+  height: 49px;
+  background: #FFFFFF;
+  color: #0C4A6E;
+  border: none;
+  font-family: var(--font-caps);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  margin-top: 24px;
+}
+
+#verde-masterplan-learn {
+  width: 261px;
+  padding: 12px 40px;
+  height: 44px;
+  margin-top: 12px;
 }

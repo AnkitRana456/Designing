@@ -7,7 +7,7 @@
       document.querySelector("#phone-num"),
       document.querySelector("#modal-phone")
     ];
-    
+
     // Safety check for library availability
     const lib = window.intlTelInput;
     if (typeof lib !== 'function') {
@@ -31,7 +31,7 @@
   // Run on various events to ensure success
   initPhoneFields();
   window.addEventListener('load', initPhoneFields);
-  setTimeout(initPhoneFields, 500); 
+  setTimeout(initPhoneFields, 500);
   setTimeout(initPhoneFields, 1500);
 
   /* ── Mobile hamburger nav ── */
@@ -148,7 +148,7 @@
 
   if (submitBtn) {
     submitBtn.addEventListener('click', () => {
-    
+
       const original = submitBtn.textContent;
       submitBtn.textContent = '✓ INQUIRY SENT!';
       submitBtn.style.background = '#2d5a27';
@@ -158,7 +158,7 @@
         submitBtn.textContent = original;
         submitBtn.style.background = '';
         submitBtn.disabled = false;
-      
+
       }, 3500);
     });
   }
@@ -215,12 +215,12 @@
     });
   }
 
- 
+
   const contactSection = document.getElementById('contact');
   const actionButtons = [
-    'verde-know-more', 'verde-brochure',
-    'gs-know-more', 'gs-brochure', 'gs-learn-more', 'gs-dl-brochure', 'gs-gallery-btn',
-    'springs-know-more', 'springs-brochure'
+    'verde-know-more', 'verde-brochure', 'verde-explore', 'verde-explore-amenities', 'verde-masterplan-learn',
+    'gs-know-more', 'gs-brochure', 'gs-learn-more', 'gs-dl-brochure', 'gs-gallery-btn', 'gs-masterplan-learn',
+    'springs-know-more', 'springs-brochure', 'm-nav-contact'
   ];
 
   actionButtons.forEach(id => {
@@ -230,7 +230,7 @@
     }
   });
 
- 
+
   function scrollToContact() {
     if (contactSection) {
       const navH = document.getElementById('navbar')?.offsetHeight || 72;
@@ -258,7 +258,7 @@
   });
 
   const fadeEls = document.querySelectorAll(
-    '.verde-about, .amenities-section, .masterplan-inner, .gs-about, .gs-gallery-inner, .springs-hero-content, .location-inner, .contact-inner'
+    '.verde-about, .amenities-section, .masterplan-inner, .gs-about, .springs-hero-content, .location-inner, .contact-inner'
   );
 
   const io = new IntersectionObserver((entries) => {
@@ -278,45 +278,39 @@
     io.observe(el);
   });
 
-  const galleryCards = document.querySelectorAll('.gs-gallery-card');
-
-  galleryCards.forEach(card => {
-    const baseTiltY = parseFloat(card.dataset.tilt || 0);
-    const gloss = card.querySelector('.card-gloss');
-
-    card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const pctX = (x / rect.width - 0.5) * 2;
-      const pctY = (y / rect.height - 0.5) * 2;
-
-      const tiltY = baseTiltY + pctX * 12;
-      const tiltX = -pctY * 9;
-      const scale = 1.06;
-
-      card.style.transition = 'transform 0.08s ease, box-shadow 0.08s ease';
-      card.style.transform =
-        `rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale(${scale}) translateZ(10px)`;
-
-      if (gloss) {
-        const gx = (pctX * 0.5 + 0.5) * 100;
-        const gy = (pctY * 0.5 + 0.5) * 100;
-        gloss.style.background =
-          `radial-gradient(circle at ${gx}% ${gy}%,
-            rgba(255,255,255,0.28) 0%,
-            rgba(255,255,255,0.06) 50%,
-            rgba(255,255,255,0) 75%)`;
-        gloss.style.opacity = '1';
-      }
+  /* ── Mobile Gallery Carousel Logic ── */
+  const galleryGrid = document.querySelector('.gs-gallery-grid');
+  const galleryDots = document.querySelectorAll('.gs-dot');
+  
+  if (galleryGrid && galleryDots.length > 0) {
+    galleryGrid.addEventListener('scroll', () => {
+      const firstCard = galleryGrid.firstElementChild;
+      if (!firstCard) return;
+      const style = window.getComputedStyle(galleryGrid);
+      const gap = parseInt(style.columnGap || style.gap || '0');
+      const itemWidth = firstCard.offsetWidth + gap;
+      const activeIndex = Math.min(
+        galleryDots.length - 1,
+        Math.max(0, Math.round(galleryGrid.scrollLeft / itemWidth))
+      );
+      
+      galleryDots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === activeIndex);
+      });
     });
 
-    card.addEventListener('mouseleave', () => {
-
-      card.style.transition = 'transform 0.5s cubic-bezier(0.23,1,0.32,1), box-shadow 0.5s cubic-bezier(0.23,1,0.32,1)';
-      card.style.transform = '';
-      if (gloss) gloss.style.opacity = '0';
+    galleryDots.forEach((dot) => {
+      dot.addEventListener('click', () => {
+        const index = parseInt(dot.getAttribute('data-index') || '0', 10);
+        const firstCard = galleryGrid.firstElementChild;
+        if (!firstCard) return;
+        const style = window.getComputedStyle(galleryGrid);
+        const gap = parseInt(style.columnGap || style.gap || '0');
+        const itemWidth = firstCard.offsetWidth + gap;
+        galleryGrid.scrollTo({ left: index * itemWidth, behavior: 'smooth' });
+      });
     });
-  });
+  }
 
 })();
+

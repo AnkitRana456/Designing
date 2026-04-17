@@ -140,12 +140,14 @@
 
   <section class="verde-about" id="verde-about">
     <div class="about-image-col">
-      <img class="imageVerde" src="images/Hero Image2.svg" alt="Embassy VERDE villa exterior"
-        class="about-property-img" />
+      <picture>
+        <source media="(max-width: 768px)" srcset="images/mobile-hero.svg">
+        <img class="imageVerde about-property-img" src="images/Hero Image2.svg" alt="Embassy VERDE villa exterior" />
+      </picture>
     </div>
     <div class="about-content-col verde-content">
       <p class="eyebrow green-eyebrow">ECO-FRIENDLY LIVING</p>
-      <h2 class="about-title">Embassy VERDE</h2>
+      <h2 class="about-title">Embassy<br>VERDE</h2>
       <p class="about-desc">Embassy Verde offers modern living amidst lush greenery in Embassy Springs, North Bengaluru.
         With wellness amenities, landscaped open spaces, and easy access to the international airport, it brings
         together nature, comfort, and seamless connectivity.</p>
@@ -164,6 +166,7 @@
           <div class="spec-text">AT NORTH BANGALORE</div>
         </div>
       </div>
+      <button class="btn-green-solid" id="verde-explore">EXPLORE THE SITE MAP</button>
     </div>
   </section>
 
@@ -173,39 +176,47 @@
         <h2 class="section-title-dark">Amenities</h2>
         <p class="section-sub-caps">DISCOVER THE IDEAL FUSION OF ELEGANCE AND PRACTICALITY.</p>
       </div>
+      <div class="carousel-controls">
+        <button class="carousel-btn" id="verde-prev" aria-label="Previous amenity">
+          <img src="images/arrow_forward_ios1.svg" alt="" />
+        </button>
+        <button class="carousel-btn carousel-btn-active" id="verde-next" aria-label="Next amenity">
+          <img src="images/arrow_forward_ios.svg" alt="" />
+        </button>
+      </div>
     </div>
     <div class="amenities-carousel-wrap">
       <div class="amenities-carousel" id="verde-carousel">
         <div class="amenity-card">
-          <img src="images\amenity_arrival_plaza.png" alt="Arrival Plaza" class="amenity-img" />
+          <img src="images\amenities-11.svg" alt="Arrival Plaza" class="amenity-img" />
           <div class="amenity-label">
             <img class="IconsChange" src="images/icon1.svg" alt="" />
             <span>Arrival Plaza</span>
           </div>
         </div>
         <div class="amenity-card">
-          <img src="images/verde_gallery_pool.png" alt="Swimming Pool" class="amenity-img" />
+          <img src="images/amenities-22.svg" alt="Swimming Pool" class="amenity-img" />
           <div class="amenity-label">
             <img class="IconsChange" src="images/icon2.svg" alt="" />
             <span>Swimming Pool</span>
           </div>
         </div>
         <div class="amenity-card">
-          <img src="images/verde_gallery_living.png" alt="Sports Courts" class="amenity-img" />
+          <img src="images/amenities-33.svg" alt="Sports Courts" class="amenity-img" />
           <div class="amenity-label">
             <img class="IconsChange" src="images/icon3.svg" alt="" />
             <span>Sports Courts</span>
           </div>
         </div>
         <div class="amenity-card">
-          <img src="images/embassy_verde_house.png" alt="Driveways" class="amenity-img" />
+          <img src="images/amenities-4.svg" alt="Driveways" class="amenity-img" />
           <div class="amenity-label">
             <img class="IconsChange" src="images/icon4.svg" alt="" />
             <span>Driveways</span>
           </div>
         </div>
         <div class="amenity-card">
-          <img src="images/verde_gallery_pool.png" alt="Pet Park" class="amenity-img" />
+          <img src="images/amenities-5.svg" alt="Pet Park" class="amenity-img" />
           <div class="amenity-label">
             <img class="IconsChange" src="images/icon5.svg" alt="" />
             <span>Pet Park</span>
@@ -213,13 +224,8 @@
         </div>
       </div>
     </div>
-    <div class="carousel-controls">
-      <button class="carousel-btn" id="verde-prev" aria-label="Previous amenity">
-        <img src="images/arrow_forward_ios1.svg" alt="" />
-      </button>
-      <button class="carousel-btn carousel-btn-active" id="verde-next" aria-label="Next amenity">
-        <img src="images/arrow_forward_ios.svg" alt="" />
-      </button>
+    <div class="amenities-footer-action">
+      <button class="btn-green-solid" id="verde-explore-amenities">EXPLORE THE SITE MAP</button>
     </div>
   </section>
 
@@ -228,7 +234,10 @@
       <h2 class="section-title-dark">Master Plan</h2>
       <p class="section-sub-caps">MASTER PLAN INSPIRED BY NATURE</p>
       <div class="masterplan-img-wrap">
-        <img src="images/master.svg" alt="Embassy VERDE site master plan" class="masterplan-img" />
+        <picture>
+          <source media="(max-width: 768px)" srcset="images/mobile-master.svg">
+          <img src="images/master.svg" alt="Embassy VERDE site master plan" class="masterplan-img" />
+        </picture>
       </div>
       <div class="masterplan-legend verde-legend">
         <div class="legend-item"><span class="legend-num verde-num">01</span><span class="legend-text">Site Entry</span>
@@ -254,12 +263,15 @@
         <div class="legend-item"><span class="legend-num verde-num">11</span><span class="legend-text">Pet Park</span>
         </div>
       </div>
+      <div class="masterplan-action">
+        <button class="btn-green-solid" id="verde-masterplan-learn">LEARN MORE</button>
+      </div>
     </div>
   </section>
 
   <section class="greenshore-hero" id="greenshore">
     <div class="greenshore-hero-bg">
-      <img src="images/embassy_greenshore_tower.png" alt="Embassy GREENSHORE" class="hero-bg-img gs-bg" />
+      <img src="images/greenshore-bg.svg" alt="Embassy GREENSHORE" class="hero-bg-img gs-bg" />
       <div class="greenshore-hero-overlay"></div>
       <div class="gs-hex-shape"></div>
     </div>
@@ -282,7 +294,7 @@
   <section class="gs-about" id="gs-about">
     <div class="gs-about-content">
       <p class="eyebrow blue-eyebrow">ECO-FRIENDLY LIVING</p>
-      <h2 class="gs-about-title">Embassy GREENSHORE</h2>
+      <h2 class="gs-about-title">Embassy<br>GREENSHORE</h2>
       <p class="about-desc white-desc">Thoughtfully designed spacious homes with large windows and open layouts bring
         nature closer to everyday living. Located within the sustainable township of Embassy Springs, Embassy Greenshore
         offers access to top social infrastructure, green landscapes, and a vibrant communityâ€”creating a peaceful and
@@ -307,7 +319,10 @@
       </div>
     </div>
     <div class="gs-about-image">
-      <img src="images/greenshore_night_city.png" alt="Embassy GREENSHORE night view" class="gs-property-img" />
+      <picture>
+        <source media="(max-width: 768px)" srcset="images/Project Image.svg">
+        <img src="images/desktop-project.svg" alt="Embassy GREENSHORE night view" class="gs-property-img" />
+      </picture>
     </div>
   </section>
 
@@ -316,7 +331,11 @@
       <h2 class="section-title-light">Master Plan</h2>
       <p class="section-sub-caps light-caps">MASTER PLAN INSPIRED BY NATURE</p>
       <div class="masterplan-img-wrap">
-        <img src="images/Master Plan Image Container.svg" alt="Embassy GREENSHORE master plan" class="masterplan-img" />
+        <picture>
+          <source media="(max-width: 768px)" srcset="images/new master image.svg">
+          <img src="images/Master Plan Image Container.svg" alt="Embassy GREENSHORE master plan"
+            class="masterplan-img" />
+        </picture>
       </div>
       <div class="masterplan-legend gs-legend">
         <div class="legend-item"><span class="legend-num gs-num">01</span><span class="legend-text">Entry</span></div>
@@ -347,31 +366,40 @@
         <div class="legend-item"><span class="legend-num gs-num">15</span><span class="legend-text">Swimming Pool</span>
         </div>
       </div>
+      <div class="masterplan-action">
+        <button class="btn-gs-outline" id="gs-masterplan-learn">LEARN MORE</button>
+      </div>
     </div>
   </section>
 
   <section class="gs-gallery" id="gs-gallery">
     <div class="gs-gallery-inner">
       <h2 class="gs-gallery-title">Experience the Gallery</h2>
-      <p class="gs-gallery-sub">A glimpse into life at Embassy Greenshoreâ€”<br>where everyday living feels like
+      <p class="gs-gallery-sub">A glimpse into life at Embassy Greenshore<br>where everyday living feels like
         happiness.</p>
       <div class="gs-gallery-grid">
         <div class="gs-gallery-card gs-gc-left" data-tilt="18">
           <div class="card-gloss"></div>
-          <img src="images/greenshore_gallery_amenity.png" alt="Greenshore gallery 1" />
+          <img src="images/blank-gallery.png" alt="Greenshore gallery 1" />
         </div>
         <div class="gs-gallery-card gs-gc-center-left" data-tilt="6">
           <div class="card-gloss"></div>
-          <img src="images/embassy_greenshore_tower.png" alt="Greenshore gallery 2" />
+          <img src="images/blank-gallery.png" alt="Greenshore gallery 2" />
         </div>
         <div class="gs-gallery-card gs-gc-center-right" data-tilt="-6">
           <div class="card-gloss"></div>
-          <img src="images/greenshore_night_city.png" alt="Greenshore gallery 3" />
+          <img src="images/blank-gallery.png" alt="Greenshore gallery 3" />
         </div>
         <div class="gs-gallery-card gs-gc-right" data-tilt="-18">
           <div class="card-gloss"></div>
-          <img src="images/greenshore_gallery_amenity.png" alt="Greenshore gallery 4" />
+          <img src="images/blank-gallery.png" alt="Greenshore gallery 4" />
         </div>
+      </div>
+      <div class="gs-gallery-pagination">
+        <div class="gs-dot active" data-index="0"></div>
+        <div class="gs-dot" data-index="1"></div>
+        <div class="gs-dot" data-index="2"></div>
+        <div class="gs-dot" data-index="3"></div>
       </div>
       <button class="btn-gs-brochure btn-center" id="gs-gallery-btn">DOWNLOAD BROCHURE</button>
     </div>
@@ -379,7 +407,7 @@
 
   <section class="springs-hero" id="springs">
     <div class="springs-hero-bg">
-      <img src="images/springs_township.png" alt="Embassy Springs township" class="hero-bg-img" />
+      <img src="images/spring-1.svg" alt="Embassy Springs township" class="hero-bg-img" />
       <div class="springs-hero-overlay"></div>
     </div>
     <div class="springs-hero-content">
@@ -472,7 +500,7 @@
 
       <div class="modal-form-column">
         <div class="modal-logo-wrap">
-          <img src="" alt="Embassy Developments" class="modal-top-logo" />
+          <img src="images/MAIN LOGO BLACK.svg" alt="Embassy Developments" class="modal-top-logo" />
         </div>
         <h2 class="redesigned-modal-title">Get in touch</h2>
         <div id="redesigned-enquiry-modal" class="enq_form redesigned-modal-form">
