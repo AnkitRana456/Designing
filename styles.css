@@ -748,7 +748,7 @@ section,
   z-index: 1;
   will-change: transform;
   overflow: hidden;
-  padding: 20px 64px !important;
+  padding: 20px 64px;
 }
 
 .gs-masterplan {
@@ -2438,9 +2438,9 @@ section,
 
   /* Master plan */
   .masterplan-section {
-    padding: 28px 24px 64px 24px;
-    height: 670px;
-    min-height: 670px;
+    padding: 24px 24px 48px 24px;
+    height: auto;
+    min-height: auto;
   }
 
   .gs-masterplan {
@@ -2458,11 +2458,15 @@ section,
   .masterplan-img-wrap {
     margin: 16px 0;
     overflow: hidden;
+    background: #E5EED2;
+    padding: 12px;
+    border-radius: 8px;
   }
 
   .masterplan-img {
     width: 100%;
-    height: 240px;
+    height: auto;
+    max-height: 240px;
     object-fit: contain;
     display: block;
     margin: 0 auto;
@@ -2748,7 +2752,7 @@ section,
   }
 
   .masterplan-section {
-    padding: 24px 16px;
+    padding: 24px 16px 40px;
   }
 
   .gs-gallery {
